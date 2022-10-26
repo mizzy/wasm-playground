@@ -20,7 +20,9 @@
             mod = result.module;
             inst = result.instance;
             document.getElementById("run").disabled = false;
-        });
+        }).catch((err) => {
+            console.error(err);
+        });;
  
         async function run() {
             console.clear();
