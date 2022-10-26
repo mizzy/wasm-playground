@@ -15,19 +15,19 @@
 	}
 
         const go = new Go();
-        let mod, instance;
+        let mod, inst;
         WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
             mod = result.module;
             inst = result.instance;
             document.getElementById("run").disabled = false;
         }).catch((err) => {
             console.error(err);
-        });;
- 
+        });
+
         async function run() {
             console.clear();
-            await go.run(instance);
-            instance = await WebAssembly.instantiate(mod, go.importObject);
+            await go.run(inst);
+            inst = await WebAssembly.instantiate(mod, go.importObject);
         }
     </script>
     <button onClick="run();" id="run" disabled>Run</button>
